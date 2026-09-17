@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Whitepaper — $HOODCAT | The Cat From The Hood</title>
+<meta name="description" content="HoodCat ($HOODCAT) Whitepaper v1.0 — September 2026. A culture-first, community-driven meme project built on Solana. The cat from the hood. The meme with no permission.">
+<meta name="theme-color" content="#08080a">
+<meta property="og:title" content="Whitepaper — $HOODCAT">
+<meta property="og:description" content="The cat from the hood. The meme with no permission. Whitepaper v1.0 — September 2026.">
+<meta property="og:image" content="banner.jpg">
+<meta property="og:type" content="article">
+<link rel="icon" href="logo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --gold:#f5c445; --gold-2:#ffe89a;
+  --teal:#14f195; --purple:#9945ff;
+  --bg:#08080a; --bg-2:#0e0e12; --panel:rgba(255,255,255,.035);
+  --line:rgba(245,196,69,.18); --text:#f4f2ee; --muted:#a9a6a0;
+  --grad-gold:linear-gradient(135deg,#b8860b 0%,#f5c445 35%,#fff3c4 55%,#f5c445 75%,#9a6f08 100%);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:96px}
+body{background:var(--bg);color:var(--text);font-family:'Inter',system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.75;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(circle at 12% 0%,rgba(245,196,69,.09),transparent 42%),radial-gradient(circle at 88% 12%,rgba(153,69,255,.09),transparent 42%),radial-gradient(circle at 50% 100%,rgba(20,241,149,.06),transparent 50%)}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.wrap{width:100%;max-width:1220px;margin:0 auto;padding:0 22px;position:relative;z-index:1}
+.gold-text{background:var(--grad-gold);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 4px 18px rgba(245,196,69,.28))}
+/* nav */
+header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(8,8,10,.82);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:76px;gap:20px}
+.brand{display:flex;align-items:center;gap:12px}
+.brand img{width:44px;height:44px;border-radius:50%;border:1.5px solid rgba(245,196,69,.55);box-shadow:0 0 20px rgba(245,196,69,.25)}
+.brand-text{font-family:'Anton',sans-serif;font-size:1.28rem;letter-spacing:.06em;text-transform:uppercase}
+.brand-text small{display:block;font-family:'Inter',sans-serif;font-size:.56rem;letter-spacing:.32em;color:var(--muted);font-weight:600;margin-top:-2px}
+.nav-links{display:flex;align-items:center;gap:28px}
+.nav-links a{font-size:.78rem;font-weight:600;text-transform:uppercase;letter-spacing:.13em;color:#cfcbc4;transition:color .25s;position:relative;padding:4px 0}
+.nav-links a:hover{color:var(--gold-2)}
+.nav-links a.active{color:var(--gold-2)}
+.nav-links a.active::after{content:"";position:absolute;left:0;bottom:0;height:1.5px;width:100%;background:var(--grad-gold)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:12px 24px;border-radius:999px;font-weight:700;font-size:.76rem;text-transform:uppercase;letter-spacing:.11em;cursor:pointer;border:none;transition:transform .22s,box-shadow .22s,background .22s;white-space:nowrap}
+.btn-gold{background:var(--grad-gold);color:#161005;box-shadow:0 8px 28px rgba(245,196,69,.32),inset 0 1px 0 rgba(255,255,255,.5)}
+.btn-gold:hover{transform:translateY(-3px);box-shadow:0 14px 38px rgba(245,196,69,.45)}
+.btn-ghost{background:rgba(255,255,255,.05);color:var(--text);border:1px solid rgba(255,255,255,.16)}
+.btn-ghost:hover{transform:translateY(-3px);border-color:rgba(245,196,69,.5);background:rgba(245,196,69,.08)}
+.burger{display:none;width:44px;height:44px;border-radius:12px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.13);cursor:pointer;align-items:center;justify-content:center;flex-direction:column;gap:5px}
+.burger span{width:18px;height:2px;background:var(--gold);border-radius:2px}
+.mobile-menu{position:fixed;inset:76px 0 auto 0;background:rgba(8,8,10,.98);backdrop-filter:blur(20px);border-bottom:1px solid var(--line);padding:24px 22px 32px;display:none;flex-direction:column;gap:4px;z-index:99}
+.mobile-menu.open{display:flex}
+.mobile-menu a{padding:13px 4px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;font-size:.88rem;border-bottom:1px solid rgba(255,255,255,.06)}
+.mobile-menu .btn{margin-top:14px}
+/* doc header */
+.doc-head{padding:150px 0 54px;border-bottom:1px solid rgba(255,255,255,.07);position:relative;z-index:1}
+.kicker{display:inline-flex;align-items:center;gap:9px;padding:8px 17px;border-radius:999px;background:rgba(245,196,69,.09);border:1px solid rgba(245,196,69,.32);font-size:.66rem;font-weight:700;letter-spacing:.19em;text-transform:uppercase;color:var(--gold-2);margin-bottom:24px}
+.doc-head h1{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(2.9rem,7.5vw,5.6rem);line-height:.94;letter-spacing:.01em;margin-bottom:16px}
+.doc-head .tagline{font-size:clamp(1rem,1.6vw,1.22rem);color:#d3cfc7;max-width:640px}
+.doc-head .meta{margin-top:26px;display:flex;gap:22px;flex-wrap:wrap;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.doc-head .meta span{display:flex;align-items:center;gap:9px}
+.doc-head .meta span::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--gold)}
+/* layout */
+.doc-wrap{display:grid;grid-template-columns:252px 1fr;gap:60px;padding:66px 0 40px;position:relative;z-index:1}
+.toc{position:sticky;top:104px;align-self:start;max-height:calc(100vh - 140px);overflow-y:auto;border-left:1px solid rgba(255,255,255,.08);padding-left:20px}
+.toc h4{font-size:.6rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);font-weight:800;margin-bottom:16px}
+.toc a{display:block;font-size:.8rem;color:#8e8b85;padding:6px 0;transition:color .2s,padding-left .2s;font-weight:500}
+.toc a:hover{color:var(--gold-2);padding-left:5px}
+.toc a.on{color:var(--gold-2);font-weight:700;padding-left:5px}
+/* content */
+.doc section{margin-bottom:64px;scroll-margin-top:96px}
+.sec-num{font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.2em;color:var(--gold);font-weight:600;display:block;margin-bottom:10px;opacity:.85}
+.doc h2{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(1.7rem,3.3vw,2.5rem);line-height:1.05;letter-spacing:.01em;margin-bottom:24px;padding-bottom:18px;border-bottom:1px solid rgba(245,196,69,.2)}
+.doc h2 .gold-text{}
+.doc h3{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:1.12rem;letter-spacing:.05em;color:var(--gold-2);margin:30px 0 12px}
+.doc p{color:#c8c4bd;margin-bottom:18px;font-size:1.01rem}
+.doc p.strong{color:var(--text);font-weight:500;font-size:1.06rem}
+.doc .lead{color:var(--text);font-size:1.1rem}
+.flow{color:#c8c4bd;margin-bottom:20px;line-height:2.05}
+.blk{position:relative;margin:26px 0;padding:22px 26px 22px 30px;border-radius:16px;background:linear-gradient(135deg,rgba(245,196,69,.09),rgba(245,196,69,.015));border-left:3px solid var(--gold)}
+.blk p{font-family:'Anton',sans-serif;font-size:1.16rem;color:var(--gold-2);letter-spacing:.02em;margin:0;text-transform:uppercase;line-height:1.35}
+.blk.sol{border-left-color:var(--purple);background:linear-gradient(135deg,rgba(153,69,255,.1),rgba(20,241,149,.04))}
+.blk.sol p{color:#e6d9ff}
+ul.doc-list{list-style:none;display:grid;gap:11px;margin:0 0 22px}
+ul.doc-list li{display:flex;gap:12px;align-items:flex-start;color:#c8c4bd;font-size:.99rem}
+ul.doc-list li::before{content:"▸";color:var(--gold);flex-shrink:0;line-height:1.7}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin:4px 0 24px}
+.chips span{padding:9px 17px;border-radius:999px;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.11);font-size:.78rem;font-weight:600;color:#d5d1ca;transition:.25s}
+.chips span:hover{border-color:rgba(245,196,69,.42);background:rgba(245,196,69,.09);color:var(--gold-2)}
+/* cards */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:6px 0 24px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:6px 0 24px}
+.card{background:var(--panel);border:1px solid rgba(255,255,255,.075);border-radius:18px;padding:24px;transition:transform .3s,border-color .3s,background .3s}
+.card:hover{transform:translateY(-5px);border-color:rgba(245,196,69,.32);background:rgba(245,196,69,.04)}
+.card .cn{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--gold);letter-spacing:.18em;font-weight:600;display:block;margin-bottom:12px;opacity:.85}
+.card h4{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:1.02rem;letter-spacing:.05em;color:var(--gold-2);margin-bottom:9px}
+.card p{font-size:.92rem;color:#b4b0a9;margin:0}
+/* token table */
+.tbl{width:100%;border-collapse:collapse;margin:6px 0 22px;font-size:.94rem;border-radius:14px;overflow:hidden}
+.tbl th{text-align:left;padding:15px 20px;background:rgba(245,196,69,.09);color:var(--gold-2);font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;font-weight:800;border-bottom:1px solid rgba(245,196,69,.24)}
+.tbl td{padding:15px 20px;border-bottom:1px solid rgba(255,255,255,.065);color:#cac6bf;vertical-align:top}
+.tbl tr:last-child td{border-bottom:none}
+.tbl tr:hover td{background:rgba(255,255,255,.022)}
+.tbl td.k{color:var(--text);font-weight:600;white-space:nowrap}
+.tbl td.v{font-family:'JetBrains Mono',monospace;font-size:.86rem;color:#d8d4cd}
+.ph{color:var(--gold);font-family:'JetBrains Mono',monospace;font-weight:600;font-size:.86rem}
+.note{margin:20px 0;padding:18px 22px;border-radius:14px;background:rgba(20,241,149,.05);border:1px solid rgba(20,241,149,.22);font-size:.9rem;color:#bfd9cd}
+.note.warn{background:rgba(245,196,69,.05);border-color:rgba(245,196,69,.26);color:#ddd0ae}
+/* roadmap */
+.ph-block{position:relative;padding:0 0 34px 58px}
+.ph-block:last-child{padding-bottom:0}
+.ph-block::before{content:"";position:absolute;left:17px;top:8px;bottom:-10px;width:2px;background:linear-gradient(180deg,rgba(245,196,69,.55),rgba(153,69,255,.22))}
+.ph-block:last-child::before{display:none}
+.ph-dot{position:absolute;left:2px;top:2px;width:32px;height:32px;border-radius:50%;background:var(--bg-2);border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--gold-2);box-shadow:0 0 0 5px rgba(245,196,69,.09)}
+.ph-block .obj{margin-top:12px;font-size:.86rem;color:var(--muted)}
+.ph-block .obj b{color:var(--gold-2);font-weight:700}
+/* code list */
+.code-list{display:grid;gap:14px;margin:6px 0 24px}
+.code-row{background:var(--panel);border:1px solid rgba(255,255,255,.075);border-radius:16px;padding:22px 24px;border-left:3px solid var(--gold)}
+.code-row h4{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:1.02rem;letter-spacing:.05em;color:var(--gold-2);margin-bottom:6px}
+.code-row p{margin:0;font-size:.94rem;color:#bdb9b2}
+.attr{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:6px 0 24px}
+.attr div{background:var(--panel);border:1px solid rgba(255,255,255,.075);border-radius:14px;padding:18px 20px}
+.attr span{display:block;font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:6px}
+.attr b{font-family:'Anton',sans-serif;font-size:1.08rem;letter-spacing:.03em;color:var(--gold-2);text-transform:uppercase}
+/* final */
+.final{margin-top:20px;position:relative;overflow:hidden;border-radius:26px;padding:70px 40px;text-align:center;background:linear-gradient(135deg,rgba(245,196,69,.13),rgba(153,69,255,.09) 55%,rgba(20,241,149,.08));border:1px solid rgba(245,196,69,.26)}
+.final::before{content:"";position:absolute;inset:0;opacity:.13;background-image:url(logo.jpg);background-size:cover;background-position:center 30%}
+.final::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,rgba(8,8,10,.6),rgba(8,8,10,.95))}
+.final .inner{position:relative;z-index:2}
+.final .lines{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(1.2rem,2.6vw,1.8rem);line-height:1.35;color:#e9e5de;margin-bottom:26px}
+.final .cat{font-family:'Anton',sans-serif;font-size:clamp(1.6rem,4vw,2.6rem);letter-spacing:.03em}
+.final .cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:34px}
+footer{border-top:1px solid rgba(255,255,255,.07);padding:48px 0 34px;position:relative;z-index:1;background:rgba(0,0,0,.35);margin-top:40px}
+.foot{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:center}
+.foot-links{display:flex;gap:24px;flex-wrap:wrap}
+.foot-links a{font-size:.76rem;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);font-weight:600;transition:color .25s}
+.foot-links a:hover{color:var(--gold-2)}
+.foot p{font-size:.74rem;color:#7d7a75}
+.disclaimer{font-size:.72rem;color:#6e6b66;max-width:800px;line-height:1.7;margin-top:22px}
+.rv{opacity:0;transform:translateY(24px);transition:opacity .75s cubic-bezier(.2,.7,.3,1),transform .75s cubic-bezier(.2,.7,.3,1)}
+.rv.in{opacity:1;transform:none}
+@media(max-width:980px){
+  .doc-wrap{grid-template-columns:1fr;gap:0}
+  .toc{position:static;max-height:none;border-left:none;border-top:1px solid rgba(255,255,255,.08);border-bottom:1px solid rgba(255,255,255,.08);padding:22px 0;margin-bottom:46px;display:grid;grid-template-columns:repeat(2,1fr);gap:2px 20px}
+  .toc h4{grid-column:1/-1}
+  .nav-links{display:none}
+  .burger{display:flex}
+  .grid3{grid-template-columns:1fr}
+}
+@media(max-width:640px){
+  .doc-head{padding:126px 0 44px}
+  .grid2{grid-template-columns:1fr}
+  .attr{grid-template-columns:1fr}
+  .toc{grid-template-columns:1fr}
+  .final{padding:48px 22px;border-radius:20px}
+  .tbl{font-size:.86rem}
+  .tbl th,.tbl td{padding:12px 14px}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <nav class="nav">
+      <a href="index.html" class="brand">
+        <img src="logo.jpg" alt="HoodCat logo">
+        <span class="brand-text">HoodCat<small>$HOODCAT</small></span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="whitepaper.html" class="active">Whitepaper</a>
+        <a href="index.html#tokenomics">Tokenomics</a>
+        <a href="index.html#roadmap">Roadmap</a>
+        <a href="index.html#faq">FAQ</a>
+      </div>
+      <div class="nav-cta" style="display:flex;align-items:center;gap:10px">
+        <a href="index.html" class="btn btn-ghost">Back to Site</a>
+        <div class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></div>
+      </div>
+    </nav>
+  </div>
+</header>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="whitepaper.html">Whitepaper</a>
+  <a href="index.html#tokenomics">Tokenomics</a>
+  <a href="index.html#roadmap">Roadmap</a>
+  <a href="index.html#faq">FAQ</a>
+  <a href="https://t.me/+ribrSa2tTlU4MmE8" target="_blank" rel="noopener" class="btn btn-ghost">Telegram</a>
+  <a href="https://x.com/hoodcattt" target="_blank" rel="noopener" class="btn btn-gold">Follow on X</a>
+</div>
+
+<div class="doc-head">
+  <div class="wrap">
+    <span class="kicker">Whitepaper v1.0 — September 2026</span>
+    <h1><span class="gold-text">$HOODCAT</span></h1>
+    <p class="tagline">The cat from the hood. The meme with no permission.</p>
+    <div class="meta">
+      <span>Solana</span>
+      <span>Meme / Community Token</span>
+      <span>Total Supply 1,000,000,000</span>
+      <span>Contract TBA</span>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="doc-wrap">
+
+    <aside class="toc" id="toc">
+      <h4>Contents</h4>
+      <a href="#s01">01 — Abstract</a>
+      <a href="#s02">02 — The Story</a>
+      <a href="#s03">03 — What Is HoodCat?</a>
+      <a href="#s04">04 — The Philosophy</a>
+      <a href="#s05">05 — The Hood</a>
+      <a href="#s06">06 — $HOODCAT</a>
+      <a href="#s07">07 — Tokenomics</a>
+      <a href="#s08">08 — The Roadmap</a>
+      <a href="#s09">09 — Community</a>
+      <a href="#s10">10 — The HoodCat Code</a>
+      <a href="#s11">11 — Why a Cat?</a>
+      <a href="#s12">12 — Disclaimer</a>
+      <a href="#s13">13 — Final Words</a>
+    </aside>
+
+    <main class="doc">
+
+      <section id="s01" class="rv">
+        <span class="sec-num">01</span>
+        <h2>Abstract</h2>
+        <p class="lead">HoodCat ($HOODCAT) is a community-driven meme project built around a simple idea:</p>
+        <div class="blk"><p>Every hood has a cat. Every cat has a story.</p></div>
+        <p>HoodCat isn't trying to pretend that a meme coin is something it isn't. There is no complicated financial narrative, no corporate roadmap disguised as innovation, and no promise of guaranteed returns.</p>
+        <p>It is a culture-first project built around memes, community, identity and internet-native storytelling.</p>
+        <p class="strong">The mission is simple: build the most recognizable hood cat on-chain.</p>
+      </section>
+
+      <section id="s02" class="rv">
+        <span class="sec-num">02</span>
+        <h2>The Story</h2>
+        <p class="flow">Before the charts.<br>Before the green candles.<br>Before CT started talking about him.<br>There was just a cat.</p>
+        <p>He grew up watching people chase narratives, rotate liquidity and disappear when the timeline got quiet.</p>
+        <p>He learned early: <strong style="color:var(--gold-2)">Don't chase the crowd. Become the meme.</strong></p>
+        <p>So he put on the hood.</p>
+        <p class="flow">Nobody knows where he came from.</p>
+        <p>Some say he sleeps behind the local store. Some say he has been watching crypto since the first block. Others say he owns more wallets than anyone knows.</p>
+        <p>But one thing is certain:</p>
+        <div class="blk"><p>HoodCat is outside. And he's not leaving.</p></div>
+      </section>
+
+      <section id="s03" class="rv">
+        <span class="sec-num">03</span>
+        <h2>What Is HoodCat?</h2>
+        <p>HoodCat is a memecoin and internet culture brand centered around a hooded cat character.</p>
+        <p>The project is designed to give its community a recognizable identity that can exist across:</p>
+        <div class="chips">
+          <span>X</span><span>Telegram</span><span>Discord</span><span>Memes</span><span>Stickers</span><span>GIFs</span><span>Videos</span><span>Community events</span><span>On-chain culture</span>
+        </div>
+        <p>The token, $HOODCAT, is the native community token associated with the project.</p>
+        <div class="blk sol"><p>The real product is the culture. The token is the ticket into it.</p></div>
+      </section>
+
+      <section id="s04" class="rv">
+        <span class="sec-num">04</span>
+        <h2>The HoodCat Philosophy</h2>
+        <div class="grid2">
+          <div class="card">
+            <span class="cn">01</span>
+            <h4>Meme First</h4>
+            <p>HoodCat exists because memes move culture. We don't overcomplicate the narrative.</p>
+          </div>
+          <div class="card">
+            <span class="cn">02</span>
+            <h4>Community Driven</h4>
+            <p>The community isn't an audience. The community is HoodCat.</p>
+          </div>
+          <div class="card">
+            <span class="cn">03</span>
+            <h4>Internet Native</h4>
+            <p>HoodCat belongs where internet culture happens — timelines, group chats, memes and on-chain communities.</p>
+          </div>
+          <div class="card">
+            <span class="cn">04</span>
+            <h4>No Fake Promises</h4>
+            <p>$HOODCAT is a meme/community token. There are no guarantees of profit, price appreciation or future value.</p>
+          </div>
+          <div class="card">
+            <span class="cn">05</span>
+            <h4>Build in Public</h4>
+            <p>The project evolves with the community. Ideas, artwork, memes and experiments can come from anyone.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="s05" class="rv">
+        <span class="sec-num">05</span>
+        <h2>The Hood</h2>
+        <p>The hood represents more than clothing. It represents identity.</p>
+        <p>It represents the people who started with little, figured things out themselves and refused to wait for permission.</p>
+        <p>HoodCat doesn't need to look like everyone else. He doesn't need approval. He simply shows up.</p>
+        <h3>HoodCat energy:</h3>
+        <div class="blk"><p>Stay low. Move smart. Make noise when necessary. Never lose the meme.</p></div>
+      </section>
+
+      <section id="s06" class="rv">
+        <span class="sec-num">06</span>
+        <h2>$HOODCAT</h2>
+        <div class="attr">
+          <div><span>Ticker</span><b>$HOODCAT</b></div>
+          <div><span>Token Type</span><b>Meme / Community Token</b></div>
+          <div><span>Chain</span><b>Solana</b></div>
+          <div><span>Total Supply</span><b>1 Billion</b></div>
+        </div>
+        <table class="tbl">
+          <tr><th>Field</th><th>Value</th></tr>
+          <tr><td class="k">Contract Address</td><td class="v"><span class="ph">TBA — mint address dropping soon</span></td></tr>
+        </table>
+        <p>$HOODCAT is intended to function as the community token surrounding the HoodCat ecosystem and culture.</p>
+        <h3>Potential community uses may include</h3>
+        <ul class="doc-list">
+          <li>Community campaigns</li>
+          <li>Meme competitions</li>
+          <li>Community rewards</li>
+          <li>Access to selected events or activities</li>
+          <li>Creator initiatives</li>
+          <li>Experimental ecosystem integrations</li>
+        </ul>
+        <div class="note">Any future utility will be announced transparently and may change as the project develops.</div>
+      </section>
+
+      <section id="s07" class="rv">
+        <span class="sec-num">07</span>
+        <h2>Tokenomics</h2>
+        <p>The initial token distribution should be published transparently before or at launch.</p>
+        <table class="tbl">
+          <tr><th>Allocation</th><th>Percentage</th></tr>
+          <tr><td class="k">Community / Public Liquidity</td><td class="v"><span class="ph">[XX%]</span></td></tr>
+          <tr><td class="k">Liquidity</td><td class="v"><span class="ph">[XX%]</span></td></tr>
+          <tr><td class="k">Community Rewards</td><td class="v"><span class="ph">[XX%]</span></td></tr>
+          <tr><td class="k">Marketing / Growth</td><td class="v"><span class="ph">[XX%]</span></td></tr>
+          <tr><td class="k">Development</td><td class="v"><span class="ph">[XX%]</span></td></tr>
+          <tr><td class="k">Team</td><td class="v"><span class="ph">[XX%]</span></td></tr>
+        </table>
+        <div class="note warn">No allocation should be described as locked, burned, renounced or vested unless that action has actually occurred.</div>
+      </section>
+
+      <section id="s08" class="rv">
+        <span class="sec-num">08</span>
+        <h2>The Roadmap</h2>
+        <p>HoodCat doesn't believe in pretending that a roadmap written today can predict everything that will happen tomorrow.</p>
+        <p>Instead, development happens through phases.</p>
+
+        <div class="ph-block">
+          <div class="ph-dot">01</div>
+          <h3>Phase 1 — The Arrival</h3>
+          <ul class="doc-list">
+            <li>Launch $HOODCAT</li>
+            <li>Establish official social channels</li>
+            <li>Launch HoodCat visual identity</li>
+            <li>Build initial community</li>
+            <li>Create memes and lore</li>
+            <li>Establish liquidity</li>
+            <li>Publish contract and token information</li>
+          </ul>
+          <p class="obj"><b>Objective:</b> Make people recognize the cat.</p>
+        </div>
+
+        <div class="ph-block">
+          <div class="ph-dot">02</div>
+          <h3>Phase 2 — The Hood</h3>
+          <ul class="doc-list">
+            <li>Community meme contests</li>
+            <li>Creator collaborations</li>
+            <li>HoodCat sticker/GIF packs</li>
+            <li>Community spaces</li>
+            <li>Character expansion</li>
+            <li>Viral social campaigns</li>
+            <li>Community-generated lore</li>
+          </ul>
+          <p class="obj"><b>Objective:</b> Turn a character into a culture.</p>
+        </div>
+
+        <div class="ph-block">
+          <div class="ph-dot">03</div>
+          <h3>Phase 3 — Outside The Hood</h3>
+          <ul class="doc-list">
+            <li>Partnerships and collaborations</li>
+            <li>Community events</li>
+            <li>Merch experiments</li>
+            <li>Additional digital experiences</li>
+            <li>On-chain experiments</li>
+            <li>Creator ecosystem initiatives</li>
+          </ul>
+          <p class="obj"><b>Objective:</b> Take HoodCat beyond the original community.</p>
+        </div>
+
+        <div class="ph-block">
+          <div class="ph-dot">04</div>
+          <h3>Phase 4 — The Legacy</h3>
+          <p>If the community reaches this stage, HoodCat becomes bigger than a token.</p>
+          <p>The goal becomes building an internet-native character and brand capable of surviving multiple market cycles.</p>
+          <div class="blk"><p>Because memes come and go. Icons stay.</p></div>
+        </div>
+      </section>
+
+      <section id="s09" class="rv">
+        <span class="sec-num">09</span>
+        <h2>Community</h2>
+        <p>HoodCat is designed around participation rather than spectatorship.</p>
+        <h3>The community can contribute through</h3>
+        <div class="grid2">
+          <div class="card">
+            <span class="cn">MEMES</span>
+            <h4>Create</h4>
+            <p>The next viral HoodCat image.</p>
+          </div>
+          <div class="card">
+            <span class="cn">LORE</span>
+            <h4>Add</h4>
+            <p>Stories to the HoodCat universe.</p>
+          </div>
+          <div class="card">
+            <span class="cn">ART</span>
+            <h4>Interpret</h4>
+            <p>New takes on the character.</p>
+          </div>
+          <div class="card">
+            <span class="cn">CONTENT</span>
+            <h4>Make</h4>
+            <p>Videos, edits, animations and posts.</p>
+          </div>
+          <div class="card">
+            <span class="cn">CULTURE</span>
+            <h4>Turn</h4>
+            <p>Ordinary moments into HoodCat moments.</p>
+          </div>
+        </div>
+        <div class="blk sol"><p>The best community contribution doesn't necessarily come from the biggest account. Sometimes it comes from the person with 200 followers who makes the meme everyone reposts.</p></div>
+      </section>
+
+      <section id="s10" class="rv">
+        <span class="sec-num">10</span>
+        <h2>The HoodCat Code</h2>
+        <div class="code-list">
+          <div class="code-row">
+            <h4>Never beg for attention.</h4>
+            <p>Earn it.</p>
+          </div>
+          <div class="code-row">
+            <h4>Never kill the meme.</h4>
+            <p>Extend it.</p>
+          </div>
+          <div class="code-row">
+            <h4>Never underestimate the community.</h4>
+            <p>Someone is always cooking.</p>
+          </div>
+          <div class="code-row">
+            <h4>Never confuse hype with guarantees.</h4>
+            <p>Markets move.</p>
+          </div>
+          <div class="code-row">
+            <h4>Never forget where you came from.</h4>
+            <p>The hood stays with you.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="s11" class="rv">
+        <span class="sec-num">11</span>
+        <h2>Why a Cat?</h2>
+        <p class="lead">Because the internet already chose.</p>
+        <p>Cats are one of the oldest and most persistent forms of internet culture. But HoodCat isn't just another cute cat.</p>
+        <h3>He's</h3>
+        <ul class="doc-list">
+          <li>street-smart.</li>
+          <li>anonymous.</li>
+          <li>unbothered.</li>
+          <li>slightly dangerous to the timeline.</li>
+        </ul>
+        <p>And occasionally… extremely bullish.</p>
+      </section>
+
+      <section id="s12" class="rv">
+        <span class="sec-num">12</span>
+        <h2>Disclaimer</h2>
+        <p>$HOODCAT is a meme/community token created for entertainment, culture and community participation.</p>
+        <p>Nothing in this whitepaper constitutes financial, investment, legal or tax advice.</p>
+        <p>The token should not be represented as a guaranteed investment or as a promise of future returns.</p>
+        <p>Cryptocurrency markets are highly volatile and participants can lose some or all of the value they commit.</p>
+        <p>Any roadmap, utility or future initiative described in this document represents potential project direction and should not be interpreted as a guarantee that such features will be delivered.</p>
+      </section>
+
+      <section id="s13" class="rv">
+        <span class="sec-num">13</span>
+        <h2>Final Words</h2>
+        <p class="flow">Every cycle creates thousands of tokens.<br>Most become a forgotten contract address.<br>A few become memes.<br>Even fewer become culture.</p>
+        <p>HoodCat is here to try something different. Not another complicated narrative. Not another forced utility pitch.</p>
+        <p class="flow">Just a cat.<br>A hood.<br>A community.</p>
+        <p>And an internet that is always looking for its next obsession.</p>
+        <div class="final">
+          <div class="inner">
+            <div class="lines">Welcome to the hood.</div>
+            <div class="cat gold-text">🐈‍⬛ $HOODCAT</div>
+            <div style="margin-top:10px;font-family:'Anton',sans-serif;text-transform:uppercase;letter-spacing:.14em;font-size:.86rem;color:#e0dcd5">The Cat From The Hood</div>
+            <div class="cta">
+              <a href="index.html#buy" class="btn btn-gold">Buy $HOODCAT</a>
+              <a href="https://t.me/+ribrSa2tTlU4MmE8" target="_blank" rel="noopener" class="btn btn-ghost">Join Telegram</a>
+              <a href="https://x.com/hoodcattt" target="_blank" rel="noopener" class="btn btn-ghost">Follow on X</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <a href="index.html" class="brand">
+        <img src="logo.jpg" alt="HoodCat logo">
+        <span class="brand-text">HoodCat<small>$HOODCAT</small></span>
+      </a>
+      <div class="foot-links">
+        <a href="index.html">Home</a>
+        <a href="whitepaper.html">Whitepaper</a>
+        <a href="index.html#tokenomics">Tokenomics</a>
+        <a href="index.html#roadmap">Roadmap</a>
+        <a href="index.html#faq">FAQ</a>
+      </div>
+      <p>&copy; <span id="yr"></span> HoodCat. The original that never sold out.</p>
+    </div>
+    <p class="disclaimer">$HOODCAT is a meme/community token created for entertainment, culture and community participation. Nothing in this whitepaper constitutes financial, investment, legal or tax advice. The token should not be represented as a guaranteed investment or as a promise of future returns. Cryptocurrency markets are highly volatile and participants can lose some or all of the value they commit. Any roadmap, utility or future initiative described in this document represents potential project direction and should not be interpreted as a guarantee that such features will be delivered.</p>
+  </div>
+</footer>
+
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+var burger = document.getElementById('burger'), menu = document.getElementById('mobileMenu');
+burger.addEventListener('click', function(){ menu.classList.toggle('open'); });
+menu.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ menu.classList.remove('open'); }); });
+
+/* scrollspy */
+var links = Array.prototype.slice.call(document.querySelectorAll('.toc a'));
+var secs = links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+function spy(){
+  var best = 0;
+  secs.forEach(function(s, i){
+    if (s && s.getBoundingClientRect().top <= 140) best = i;
+  });
+  links.forEach(function(a, i){ a.classList.toggle('on', i === best); });
+}
+window.addEventListener('scroll', spy, {passive:true}); spy();
+
+/* reveal */
+var io = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+}, {threshold:.08, rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(function(el){ io.observe(el); });
+</script>
+</body>
+</html>
