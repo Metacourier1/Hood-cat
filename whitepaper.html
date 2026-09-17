@@ -105,6 +105,9 @@ ul.doc-list li::before{content:"▸";color:var(--gold);flex-shrink:0;line-height
 .tbl td.k{color:var(--text);font-weight:600;white-space:nowrap}
 .tbl td.v{font-family:'JetBrains Mono',monospace;font-size:.86rem;color:#d8d4cd}
 .ph{color:var(--gold);font-family:'JetBrains Mono',monospace;font-weight:600;font-size:.86rem}
+.cpcopy{font-family:'JetBrains Mono',monospace;font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;background:rgba(245,196,69,.13);border:1px solid rgba(245,196,69,.36);color:var(--gold-2);border-radius:8px;padding:6px 12px;cursor:pointer;font-weight:600;transition:background .22s,border-color .22s,color .22s;margin-left:10px;vertical-align:middle}
+.cpcopy:hover{background:rgba(245,196,69,.24)}
+.cpcopy.done{background:rgba(20,241,149,.18);border-color:rgba(20,241,149,.5);color:var(--teal)}
 .note{margin:20px 0;padding:18px 22px;border-radius:14px;background:rgba(20,241,149,.05);border:1px solid rgba(20,241,149,.22);font-size:.9rem;color:#bfd9cd}
 .note.warn{background:rgba(245,196,69,.05);border-color:rgba(245,196,69,.26);color:#ddd0ae}
 /* roadmap */
@@ -190,7 +193,7 @@ footer{border-top:1px solid rgba(255,255,255,.07);padding:48px 0 34px;position:r
   <a href="index.html#tokenomics">Tokenomics</a>
   <a href="index.html#roadmap">Roadmap</a>
   <a href="index.html#faq">FAQ</a>
-  <a href="https://t.me/+ribrSa2tTlU4MmE8" target="_blank" rel="noopener" class="btn btn-ghost">Telegram</a>
+  <a href="https://t.me/HoodCatttOnSolana" target="_blank" rel="noopener" class="btn btn-ghost">Telegram</a>
   <a href="https://x.com/hoodcattt" target="_blank" rel="noopener" class="btn btn-gold">Follow on X</a>
 </div>
 
@@ -203,7 +206,7 @@ footer{border-top:1px solid rgba(255,255,255,.07);padding:48px 0 34px;position:r
       <span>Solana</span>
       <span>Meme / Community Token</span>
       <span>Total Supply 1,000,000,000</span>
-      <span>Contract TBA</span>
+      <span>CA 7rZG…pump</span>
     </div>
   </div>
 </div>
@@ -318,7 +321,7 @@ footer{border-top:1px solid rgba(255,255,255,.07);padding:48px 0 34px;position:r
         </div>
         <table class="tbl">
           <tr><th>Field</th><th>Value</th></tr>
-          <tr><td class="k">Contract Address</td><td class="v"><span class="ph">TBA — mint address dropping soon</span></td></tr>
+          <tr><td class="k">Contract Address</td><td class="v" style="word-break:break-all">7rZGSZB2ykmcjfRCwmKejFHLgL8PEnxoooQGhsn2pump<button class="cpcopy" id="wpCopy" data-ca="7rZGSZB2ykmcjfRCwmKejFHLgL8PEnxoooQGhsn2pump">Copy</button></td></tr>
         </table>
         <p>$HOODCAT is intended to function as the community token surrounding the HoodCat ecosystem and culture.</p>
         <h3>Potential community uses may include</h3>
@@ -509,7 +512,7 @@ footer{border-top:1px solid rgba(255,255,255,.07);padding:48px 0 34px;position:r
             <div style="margin-top:10px;font-family:'Anton',sans-serif;text-transform:uppercase;letter-spacing:.14em;font-size:.86rem;color:#e0dcd5">The Cat From The Hood</div>
             <div class="cta">
               <a href="index.html#buy" class="btn btn-gold">Buy $HOODCAT</a>
-              <a href="https://t.me/+ribrSa2tTlU4MmE8" target="_blank" rel="noopener" class="btn btn-ghost">Join Telegram</a>
+              <a href="https://t.me/HoodCatttOnSolana" target="_blank" rel="noopener" class="btn btn-ghost">Join Telegram</a>
               <a href="https://x.com/hoodcattt" target="_blank" rel="noopener" class="btn btn-ghost">Follow on X</a>
             </div>
           </div>
@@ -545,6 +548,15 @@ document.getElementById('yr').textContent = new Date().getFullYear();
 var burger = document.getElementById('burger'), menu = document.getElementById('mobileMenu');
 burger.addEventListener('click', function(){ menu.classList.toggle('open'); });
 menu.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ menu.classList.remove('open'); }); });
+
+/* copy contract */
+var cp = document.getElementById('wpCopy');
+if (cp) { cp.addEventListener('click', function(){
+  var ca = cp.getAttribute('data-ca');
+  var ok = function(){ cp.classList.add('done'); cp.textContent = 'Copied'; setTimeout(function(){ cp.classList.remove('done'); cp.textContent = 'Copy'; }, 2200); };
+  if (navigator.clipboard) { navigator.clipboard.writeText(ca).then(ok).catch(function(){ window.prompt('Copy the contract address:', ca); }); }
+  else { window.prompt('Copy the contract address:', ca); }
+}); }
 
 /* scrollspy */
 var links = Array.prototype.slice.call(document.querySelectorAll('.toc a'));
